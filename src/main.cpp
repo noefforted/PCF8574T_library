@@ -1,18 +1,18 @@
 #include <Arduino.h>
+#include <PCF8574T.h>
 
-// put function declarations here:
-int myFunction(int, int);
+PCF8574T pcf(0x20);
 
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+void setup()
+{
+  Serial.begin(9600);
+  Wire.begin();
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+void loop()
+{
+  pcf.writePin(8, HIGH);
+  Serial.println("Status pin 8: ");
+  pcf.readPin(8) ? "HIDUP" : "MATI";
+  delay(1000);
 }

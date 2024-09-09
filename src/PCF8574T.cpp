@@ -26,7 +26,6 @@ uint8_t PCF8574T::readAll()
     if (Wire.available())
     {
         _dataState = Wire.read();
-        return _dataState;
     }
     return 0xFF;
 }
