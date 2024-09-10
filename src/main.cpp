@@ -11,8 +11,24 @@ void setup()
 
 void loop()
 {
-  pcf.writePin(8, HIGH);
-  Serial.println("Status pin 8: ");
-  pcf.readPin(8) ? "HIDUP" : "MATI";
-  delay(1000);
+  for(int i = 2; i >= 0 ; i--){
+  pcf.writePin(i, HIGH);
+  Serial.print("Status pin ");
+  Serial.print(i);
+  Serial.println(pcf.readPin(i) ? " HIDUP" : " MATI");
+  delay(200);
+  pcf.writePin(i, LOW);
+  Serial.print("Status pin ");
+  Serial.print(i);
+  Serial.println(pcf.readPin(i) ? " HIDUP" : " MATI");
+  delay(200);
+  }
+  // pcf.writePin(2, HIGH);
+  // delay(1000);
+  // pcf.writePin(2, LOW);
+  // delay(1000);
+  // pcf.writeAll(0xFF);
+  // delay(500);
+  // pcf.writeAll(0x00);
+  // delay(500);
 }

@@ -11,8 +11,8 @@ void PCF8574T::begin()
     Wire.begin();
     writeAll(_dataState);
 }
-
-void PCF8574T::writeAll(bool state)
+ 
+void PCF8574T::writeAll(uint8_t state)
 {
     _dataState = state;
     Wire.beginTransmission(_address);
