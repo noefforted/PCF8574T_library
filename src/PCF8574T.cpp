@@ -3,7 +3,7 @@
 PCF8574T::PCF8574T(uint8_t address)
 {
     _address = address;
-    _dataState = 0xFF;
+    _dataState = 0x00;
 }
 
 void PCF8574T::begin()
@@ -11,7 +11,7 @@ void PCF8574T::begin()
     Wire.begin();
     writeAll(_dataState);
 }
- 
+
 void PCF8574T::writeAll(uint8_t state)
 {
     _dataState = state;
